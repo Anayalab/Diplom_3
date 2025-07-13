@@ -37,6 +37,12 @@ public class DriverFactory {
         options.addArguments("--disable-extensions");
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("--window-size=1920,1080");
+        
+        // Headless режим через системное свойство
+        if ("true".equals(System.getProperty("headless"))) {
+            options.addArguments("--headless");
+        }
+        
         return new ChromeDriver(options);
     }
 
@@ -62,6 +68,11 @@ public class DriverFactory {
         options.addArguments("--disable-extensions");
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("--window-size=1920,1080");
+        
+        // Headless режим через системное свойство
+        if ("true".equals(System.getProperty("headless"))) {
+            options.addArguments("--headless");
+        }
         
         return new ChromeDriver(options);
     }
