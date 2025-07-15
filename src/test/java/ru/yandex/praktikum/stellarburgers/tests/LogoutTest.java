@@ -9,6 +9,7 @@ import org.junit.Test;
 import ru.yandex.praktikum.stellarburgers.model.LoginPage;
 import ru.yandex.praktikum.stellarburgers.model.ProfilePage;
 import ru.yandex.praktikum.stellarburgers.utils.BaseTest;
+import ru.yandex.praktikum.stellarburgers.utils.Constants;
 import ru.yandex.praktikum.stellarburgers.utils.User;
 import ru.yandex.praktikum.stellarburgers.utils.UserApiClient;
 
@@ -46,7 +47,7 @@ public class LogoutTest extends BaseTest {
         System.out.println("URL after logout: " + currentUrl);
         
         Assert.assertTrue("Пользователь должен быть перенаправлен после выхода. URL: " + currentUrl,
-                currentUrl.contains("/login") || currentUrl.equals("https://stellarburgers.nomoreparties.site/"));
+                currentUrl.contains("/login") || currentUrl.equals(Constants.BASE_URL));
     }
 
     @After

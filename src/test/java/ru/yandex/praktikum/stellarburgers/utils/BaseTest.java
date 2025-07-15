@@ -8,14 +8,12 @@ import ru.yandex.praktikum.stellarburgers.model.MainPage;
 public abstract class BaseTest {
     protected WebDriver driver;
     protected MainPage mainPage;
-    
-    private static final String BASE_URL = "https://stellarburgers.nomoreparties.site/";
 
     @Before
     public void setUp() {
         String browser = System.getProperty("browser", "chrome");
         driver = DriverFactory.createDriver(browser);
-        driver.get(BASE_URL);
+        driver.get(Constants.BASE_URL);
         mainPage = new MainPage(driver);
         mainPage.waitForPageLoad();
     }

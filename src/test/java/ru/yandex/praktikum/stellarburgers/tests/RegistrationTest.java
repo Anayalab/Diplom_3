@@ -8,6 +8,7 @@ import org.junit.Test;
 import ru.yandex.praktikum.stellarburgers.model.LoginPage;
 import ru.yandex.praktikum.stellarburgers.model.RegisterPage;
 import ru.yandex.praktikum.stellarburgers.utils.BaseTest;
+import ru.yandex.praktikum.stellarburgers.utils.Constants;
 import ru.yandex.praktikum.stellarburgers.utils.TestDataGenerator;
 import ru.yandex.praktikum.stellarburgers.utils.User;
 import ru.yandex.praktikum.stellarburgers.utils.UserApiClient;
@@ -47,7 +48,7 @@ public class RegistrationTest extends BaseTest {
         System.out.println("Current URL after registration: " + currentUrl);
         
         boolean isRegistrationSuccess = currentUrl.contains("/login") ||
-                                      currentUrl.equals("https://stellarburgers.nomoreparties.site/") ||
+                                      currentUrl.equals(Constants.BASE_URL) ||
                                       !registerPage.isPasswordErrorDisplayed();
         
         Assert.assertTrue("Регистрация должна быть выполнена успешно. URL: " + currentUrl, isRegistrationSuccess);

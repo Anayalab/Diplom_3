@@ -10,6 +10,7 @@ import ru.yandex.praktikum.stellarburgers.model.LoginPage;
 import ru.yandex.praktikum.stellarburgers.model.MainPage;
 import ru.yandex.praktikum.stellarburgers.model.ProfilePage;
 import ru.yandex.praktikum.stellarburgers.utils.BaseTest;
+import ru.yandex.praktikum.stellarburgers.utils.Constants;
 import ru.yandex.praktikum.stellarburgers.utils.User;
 import ru.yandex.praktikum.stellarburgers.utils.UserApiClient;
 
@@ -41,7 +42,7 @@ public class NavigationTest extends BaseTest {
         String currentUrl = driver.getCurrentUrl();
         System.out.println("URL after navigation to constructor by button: " + currentUrl);
         Assert.assertTrue("Пользователь должен быть перенаправлен на главную страницу. URL: " + currentUrl, 
-                currentUrl.equals("https://stellarburgers.nomoreparties.site/") || 
+                currentUrl.equals(Constants.BASE_URL) || 
                 (currentUrl.contains("/") && !currentUrl.contains("/profile") && !currentUrl.contains("/account")));
     }
 
@@ -58,7 +59,7 @@ public class NavigationTest extends BaseTest {
         String currentUrl = driver.getCurrentUrl();
         System.out.println("URL after navigation to constructor by logo: " + currentUrl);
         Assert.assertTrue("Пользователь должен быть перенаправлен на главную страницу. URL: " + currentUrl, 
-                currentUrl.equals("https://stellarburgers.nomoreparties.site/") || 
+                currentUrl.equals(Constants.BASE_URL) || 
                 (currentUrl.contains("/") && !currentUrl.contains("/profile") && !currentUrl.contains("/account")));
     }
 
