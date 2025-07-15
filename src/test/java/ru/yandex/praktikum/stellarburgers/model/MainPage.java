@@ -20,7 +20,7 @@ public class MainPage extends BasePage {
     @FindBy(xpath = "//a[contains(@class, 'AppHeader_header__link__3D_hX')]/p[contains(text(), 'Конструктор')]/..")
     private WebElement constructorButton;
 
-    @FindBy(css = "span.text_type_main-default")
+    @FindBy(xpath = "//span[contains(@class, 'text_type_main-default') and contains(text(), 'Булки')]")
     private WebElement bunsTab;
 
     @FindBy(xpath = "//span[contains(@class, 'text_type_main-default') and contains(text(), 'Соусы')]")
