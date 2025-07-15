@@ -6,12 +6,16 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.yandex.praktikum.stellarburgers.model.LoginPage;
 import ru.yandex.praktikum.stellarburgers.model.ProfilePage;
 import ru.yandex.praktikum.stellarburgers.utils.BaseTest;
 import ru.yandex.praktikum.stellarburgers.utils.Constants;
 import ru.yandex.praktikum.stellarburgers.utils.User;
 import ru.yandex.praktikum.stellarburgers.utils.UserApiClient;
+
+import java.time.Duration;
 
 public class LogoutTest extends BaseTest {
     
@@ -37,11 +41,11 @@ public class LogoutTest extends BaseTest {
         
         profilePage.clickLogoutButton();
         
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.or(
+            ExpectedConditions.urlContains("/login"),
+            ExpectedConditions.urlToBe(Constants.BASE_URL)
+        ));
         
         String currentUrl = driver.getCurrentUrl();
         System.out.println("URL after logout: " + currentUrl);

@@ -5,6 +5,8 @@ import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.yandex.praktikum.stellarburgers.model.LoginPage;
 import ru.yandex.praktikum.stellarburgers.model.RegisterPage;
 import ru.yandex.praktikum.stellarburgers.utils.BaseTest;
@@ -12,6 +14,8 @@ import ru.yandex.praktikum.stellarburgers.utils.Constants;
 import ru.yandex.praktikum.stellarburgers.utils.TestDataGenerator;
 import ru.yandex.praktikum.stellarburgers.utils.User;
 import ru.yandex.praktikum.stellarburgers.utils.UserApiClient;
+
+import java.time.Duration;
 
 public class RegistrationTest extends BaseTest {
     
@@ -38,11 +42,11 @@ public class RegistrationTest extends BaseTest {
         registerPage.enterPassword(password);
         registerPage.clickRegisterButton();
         
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.or(
+            ExpectedConditions.urlContains("/login"),
+            ExpectedConditions.urlToBe(Constants.BASE_URL)
+        ));
         
         String currentUrl = driver.getCurrentUrl();
         System.out.println("Current URL after registration: " + currentUrl);
